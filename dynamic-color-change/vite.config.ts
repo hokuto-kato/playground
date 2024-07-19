@@ -1,19 +1,18 @@
 import { defineConfig } from 'vite'
 
-const baseDir = 'dynamic-color-change';
-
 export default defineConfig({
+  base: `/sandbox/dynamic-color-change/`,
   build: {
-    outDir: `../docs/${baseDir}/`,
+    outDir: `../docs/dynamic-color-change/`,
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        entryFileNames: `${baseDir}/script/script.js`,
+        entryFileNames: `script/script.js`,
         assetFileNames: (assetInfo) => {
           if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            return `${baseDir}/style/style.css`
+            return `style/style.css`
           }
-          return `assets/${baseDir}/[name]-[hash][extname]`
+          return `assets/[name]-[hash][extname]`
         }
       }
     }
