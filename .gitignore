@@ -25,3 +25,6 @@ dist-ssr
 
 # JetBrains IDEs
 .idea/*
+
+# npm
+node_modules/
