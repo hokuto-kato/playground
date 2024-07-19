@@ -1,0 +1,11 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss",
+    "stylelint-config-recess-order"
+  ],
+  "ignoreFiles": ["public/**/*", "dist/**/*", "wordpress/**/*"],
+  "rules": {
+    "selector-class-pattern": null,
+    "declaration-block-no-redundant-longhand-properties": null
+  }
+}
