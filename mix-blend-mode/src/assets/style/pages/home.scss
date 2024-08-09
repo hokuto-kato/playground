@@ -1,0 +1,102 @@
+@use "~/global/mixin.scss" as *;
+@use "~/global/variables.scss" as *;
+
+body.home {
+  padding-top: 56px;
+
+  @include tablet {
+    padding-top: 0;
+  }
+}
+
+.home {
+  .swiper-container {
+    position: relative;
+    height: 100%;
+
+    .swiper {
+      height: 100%;
+    }
+  }
+
+  .kv-title {
+    position: absolute;
+    top: 24vw;
+    left: 0;
+    width: 100%;
+    pointer-events: none;
+
+    @include tablet {
+      top: 110px;
+    }
+
+    @include pc {
+      top: 10.6vw;
+    }
+
+    .kv-overlay {
+      position: relative;
+      display: block;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      padding-left: 36px;
+
+      @include tablet {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        padding-left: 40px;
+      }
+
+      @include pc {
+        padding-top: 60px;
+        padding-bottom: 60px;
+        padding-left: 140px;
+      }
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        content: "";
+        background: linear-gradient(to right, #797439 1%, #fff 95%);
+        mix-blend-mode: multiply;
+      }
+    }
+
+    .kv-body {
+      position: relative;
+      z-index: 2;
+      display: block;
+      font-size: get-font-size(20);
+      font-weight: 700;
+      line-height: 1.55;
+      color: $white;
+      text-shadow: 0 0 10px rgb(0 0 0 / 40%);
+      letter-spacing: 1px;
+
+      @include tablet {
+        font-size: get-font-size(30);
+        letter-spacing: 2.2px;
+      }
+
+      @include pc {
+        font-size: get-font-size(44);
+      }
+
+      @include lg-pc {
+        font-size: clamp(get-font-size(44), 3vw + 1rem, get-font-size(64));
+      }
+
+      &:nth-child(2) {
+        margin-top: 10px;
+
+        @include tablet {
+          margin-top: 20px;
+        }
+      }
+    }
+  }
+}

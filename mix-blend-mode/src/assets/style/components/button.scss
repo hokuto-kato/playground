@@ -1,0 +1,92 @@
+@use "~/global/variables" as *;
+@use "~/global/mixin" as *;
+
+.btn {
+  cursor: pointer;
+
+  &.-shop {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: get-font-size(16);
+    font-weight: 500;
+    color: $white;
+    text-align: center;
+    background-color: $light-green;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-size: 18.6px auto;
+    border: 1px solid $light-gray;
+    border-radius: 999px;
+
+    @include tablet {
+      font-size: get-font-size(14);
+    }
+  }
+
+  &.-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    padding: 0 20px;
+    font-size: get-font-size(14);
+    font-weight: 500;
+    color: $white;
+    text-align: center;
+    text-decoration: none;
+    background-color: $green;
+    border: 2px solid $green;
+    border-radius: 999px;
+
+    .spinner > span {
+      background-color: $white;
+    }
+
+    @include hover-button($green);
+
+    &:disabled {
+      cursor: not-allowed;
+      background-color: $gray;
+      border-color: $gray;
+      opacity: 0.8;
+
+      &::before,
+      &::after {
+        display: none;
+      }
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &.-prev {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60px;
+    padding: 0 20px;
+    font-size: get-font-size(14);
+    font-weight: 500;
+    color: $white;
+    text-align: center;
+    text-decoration: none;
+    background-color: $black;
+    border: 2px solid $black;
+    border-radius: 999px;
+
+    @include hover-button($black);
+  }
+
+  .icon-cart {
+    width: 18.6px;
+    height: auto;
+    margin-right: 7px;
+
+    & .path {
+      fill: $white;
+    }
+  }
+}

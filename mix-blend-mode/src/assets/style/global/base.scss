@@ -1,0 +1,26 @@
+@use "variables" as *;
+@use "mixin" as *;
+
+html {
+  visibility: hidden;
+
+  &.wf-active,
+  &.wf-inactive {
+    visibility: visible;
+  }
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-weight: 400;
+  color: $black;
+}
+
+.page,
+.single {
+  padding: 56px 0 60px;
+
+  @include tablet {
+    padding: 76px 0 0;
+  }
+}

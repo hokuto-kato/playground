@@ -1,0 +1,64 @@
+@use "~/global/variables.scss" as *;
+@use "~/global/mixin.scss" as *;
+
+.home {
+  .swiper-wrapper {
+    transition-timing-function: $ease-out-cubic;
+  }
+
+  .swiper-container {
+    position: relative;
+    z-index: get-z-index("swiper");
+
+    .swiper-pagination {
+      bottom: -23px;
+      height: 6px;
+
+      @include tablet {
+        bottom: -10px;
+      }
+
+      @include pc {
+        bottom: -18px;
+      }
+    }
+
+    .swiper-pagination-bullet {
+      width: 6px;
+      height: 6px;
+      margin: 0 15px !important;
+      background-color: $gray;
+      opacity: 1;
+
+      @include tablet {
+        width: 8px;
+        height: 8px;
+        margin: 20px !important;
+      }
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: $black;
+    }
+  }
+
+  .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .swiper-button-next {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+  }
+
+  .swiper-button-prev {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}

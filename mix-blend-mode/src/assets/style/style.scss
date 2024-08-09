@@ -1,0 +1,12 @@
+@use "global/reset";
+@use "global/base";
+@use "global/helpers";
+@use "swiper/scss";
+@use "swiper/scss/pagination";
+@use "swiper/scss/autoplay";
+@use "swiper/scss/effect-fade";
+@use "leaflet/dist/leaflet.css";
+@use "components/header";
+@use "components/button";
+@use "components/swiper";
+@use "pages/home";

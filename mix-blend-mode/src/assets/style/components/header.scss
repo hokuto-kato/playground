@@ -1,0 +1,338 @@
+@use "~/global/mixin" as *;
+@use "~/global/variables" as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  z-index: get-z-index("header");
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 56px;
+  padding-left: 15px;
+  background-color: $white;
+
+
+  @include tablet {
+    height: 76px;
+    padding: 0 20px;
+    background-color: initial;
+    background-image: linear-gradient(180deg,#000, rgb(0 0 0 / 0%));
+    transition: background-color 0.2s $ease-out-cubic;
+
+    &.-scrolled {
+      background-color: $white;
+
+      .header-title {
+        .logo {
+          .black {
+            fill: #595959;
+          }
+
+          .green {
+            fill: #1a9a60;
+          }
+        }
+      }
+
+      .header-inner {
+        .nav {
+          .link {
+            @include tablet {
+              color: $black;
+              text-shadow: none;
+            }
+
+            @include hover {
+              color: $green;
+              text-shadow: none;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  @include pc {
+    padding: 0 60px;
+  }
+
+  .header-title {
+    .logo {
+      @include hover-opacity(0.6);
+
+      display: flex;
+      align-items: center;
+
+      .path {
+        fill: $black;
+        transition: fill 0.2s $ease-out-cubic;
+
+        @include tablet {
+          fill: $white;
+        }
+      }
+
+      .text{
+        margin-left: 10px;
+        font-size: get-font-size(16);
+        color: $black;
+
+        @include tablet{
+          color: $white;
+        }
+      }
+    }
+  }
+
+  .menu {
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    z-index: get-z-index("menu");
+    width: 30px;
+    height: 17px;
+
+    @include hover {
+      cursor: pointer;
+    }
+
+    @include tablet {
+      display: none;
+    }
+
+    div {
+      width: 100%;
+      height: 1px;
+      background-color: #333;
+      transition:
+        transform 0.4s $ease-out-cubic,
+        opacity 0.4s $ease-out-cubic;
+    }
+
+    div:nth-child(1) {
+      position: absolute;
+      top: 0;
+      transform-origin: left;
+    }
+
+    div:nth-child(2) {
+      position: absolute;
+      top: 8px;
+    }
+
+    div:nth-child(3) {
+      position: absolute;
+      top: 16px;
+      transform-origin: left;
+    }
+
+    &._open {
+      div:nth-child(1) {
+        transform: rotate(30deg) translate(0, 0);
+      }
+
+      div:nth-child(2) {
+        opacity: 0;
+      }
+
+      div:nth-child(3) {
+        transform: rotate(-30deg) translate(0, -1px);
+      }
+    }
+  }
+
+  .header-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100dvh;
+    padding-top: 74px;
+    overflow: scroll;
+    pointer-events: none;
+    background-color: #fff;
+    opacity: 0;
+    transition: opacity 0.4s $ease-out-cubic;
+
+    @include tablet {
+      position: static;
+      flex-direction: row;
+      width: auto;
+      height: auto;
+      padding-top: 0;
+      margin-left: auto;
+      overflow: visible;
+      pointer-events: auto;
+      background-color: initial;
+      opacity: 1;
+    }
+
+    &._open {
+      pointer-events: auto;
+      opacity: 1;
+    }
+
+    .nav {
+      width: 242px;
+
+      @include tablet {
+        display: flex;
+        width: auto;
+      }
+
+      .logo {
+        display: block;
+        width: 157px;
+        margin: 0 auto;
+
+        @include tablet {
+          display: none;
+        }
+      }
+
+      .list {
+        display: flex;
+        flex-direction: column;
+        margin-top: 45px;
+
+        @include tablet {
+          flex-direction: row;
+          gap: 10px;
+          margin-top: 0;
+        }
+
+        @include pc {
+          gap: 40px;
+        }
+      }
+
+      .item {
+        @include tablet {
+          display: flex;
+          align-items: center;
+        }
+      }
+
+      .link {
+        display: block;
+        padding: 15px 7px;
+        font-size: get-font-size(16);
+        font-weight: 500;
+        color: $black;
+        letter-spacing: 0.48px;
+        background-image: url("/assets/images/icon_arrow.svg");
+        background-repeat: no-repeat;
+        background-position: 98% 50%;
+        background-size: 6px;
+        border-bottom: 1px solid $gray;
+        transition: text-shadow 0.2s $ease-out-cubic;
+
+        @include tablet {
+          text-shadow: 0 0 6px rgba($black, 0.6);
+
+          @include hover {
+            text-shadow: 0 0 6px $light-green;
+          }
+        }
+
+        @include tablet {
+          padding: 0;
+          font-size: get-font-size(14);
+          color: $white;
+          background-image: none;
+          border-bottom: none;
+        }
+
+        @include pc {
+          font-size: get-font-size(16);
+        }
+      }
+
+      .btn {
+        @include hover-button($light-green);
+
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 52px;
+        margin-top: 60px;
+        border: 1px solid $white;
+
+        @include tablet {
+          width: auto;
+          min-height: auto;
+          padding: 12px 18px;
+          margin-top: 0;
+          margin-left: 10px;
+          font-size: get-font-size(14);
+          border: 1px solid $white;
+        }
+
+        @include pc {
+          margin-left: 40px;
+          font-size: get-font-size(16);
+        }
+      }
+    }
+
+    .social {
+      width: 100%;
+      height: 100%;
+      padding-top: 20px;
+      padding-bottom: 25px;
+      margin-top: 60px;
+      text-align: center;
+      background-color: $lightest-green;
+
+      @include tablet {
+        display: none;
+      }
+
+      .title {
+        margin: 0 auto;
+        font-size: get-font-size(18);
+        font-weight: 500;
+        letter-spacing: 0.9px;
+      }
+
+      .sub-title {
+        margin-top: 17px;
+        font-family: Poppins, serif;
+        font-size: get-font-size(13);
+        font-weight: 600;
+        letter-spacing: 1.3px;
+      }
+
+      .list {
+        display: flex;
+        gap: 10px;
+        justify-content: space-between;
+        width: 324px;
+        margin: 30px auto 0;
+      }
+
+      .item {
+        flex: 1;
+      }
+
+      .link {
+        font-size: get-font-size(14);
+        color: $black;
+      }
+
+      .text {
+        font-weight: 500;
+      }
+
+      .icon {
+        display: inline;
+      }
+    }
+  }
+}
