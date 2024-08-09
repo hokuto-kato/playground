@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>mix blend mode test</title>
+    <script type="module" crossorigin src="./assets/js/index.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index.css">
+  </head>
+  <body class="home">
+    <header class="header" data-header>
+      <div class="menu" data-menu-trigger>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <h1 class="header-title">
+        <a class="logo" href="/">
+          <svg width="42" height="34" viewBox="0 0 42 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="path" d="M42 34L28.4705 10L20 25.0253L25.0589 34H42Z" />
+            <path class="path" d="M18.5202 0L0 34H12.9597L25 11.8156L18.5202 0Z" />
+          </svg>
+          <p class="text">company name</p>
+        </a>
+      </h1>
+      <div class="header-inner" data-menu-target>
+        <nav class="nav">
+          <a class="logo" href="/">
+            <img class="img" src="/images/global/logo_mori.svg" alt="" />
+          </a>
+          <ul class="list">
+            <li class="item"><a class="link" href="/business/">Greetings</a></li>
+            <li class="item"><a class="link" href="/news/">News</a></li>
+            <li class="item"><a class="link" href="/company/">Company</a></li>
+            <li class="item"><a class="link" href="/contact/">Contact</a></li>
+            <li class="item _show-mobile">
+              <a class="link" href="/privacypolicy/">Privacy Policy</a>
+            </li>
+          </ul>
+          <a class="btn -shop" href="#" target="_blank">
+            <svg
+              class="icon-cart"
+              xmlns="http://www.w3.org/2000/svg"
+              width="18.643"
+              height="19.752"
+              viewBox="0 0 18.643 19.752"
+            >
+              <g id="Shopping_cart_icon_10" transform="translate(9.322 9.876)">
+                <g id="Shopping_cart_icon_10-2" transform="translate(-9.322 -9.876)">
+                  <path
+                    class="path"
+                    id="path_30099"
+                    d="M32.783,3.693a1.029,1.029,0,0,0-.8-.377h-13.4l-.456-1.567h0a2,2,0,0,0-1.5-1.385L14.994.011a.514.514,0,0,0-.215,1l1.638.351a.977.977,0,0,1,.731.675l2.993,10.283c-.067.031-.133.066-.2.1a2.077,2.077,0,0,0-.755.777,2.143,2.143,0,0,0-.262.989h0v.053h0a2.127,2.127,0,0,0,2.127,2.075h9.628a.514.514,0,0,0,0-1.027H21.055a1.091,1.091,0,0,1-.428-.086,1.1,1.1,0,0,1-.485-.4,1.045,1.045,0,0,1,.048-1.256,1.064,1.064,0,0,1,.283-.243,1.306,1.306,0,0,1,.4-.153l9.677-1.575a1.542,1.542,0,0,0,1.263-1.214l1.184-5.819h0a1.049,1.049,0,0,0,.02-.2A1.029,1.029,0,0,0,32.783,3.693ZM30.8,10.163a.514.514,0,0,1-.421.405l-9.246,1.5-2.25-7.73h13.1Z"
+                    transform="translate(-14.372 0)"
+                    fill=""
+                  />
+                  <path
+                    class="path"
+                    id="path_30100"
+                    d="M163.316,438.744a1.416,1.416,0,1,0,.513.624A1.416,1.416,0,0,0,163.316,438.744Zm-.266,1.4a.576.576,0,0,1-.207.252.572.572,0,0,1-.542.053.576.576,0,0,1-.252-.208A.574.574,0,0,1,162,439.7a.575.575,0,0,1,.208-.252.566.566,0,0,1,.319-.1.572.572,0,0,1,.527.794Z"
+                    transform="translate(-155.444 -421.585)"
+                    fill=""
+                  />
+                  <path
+                    class="path"
+                    id="path_30101"
+                    d="M364.849,438.744a1.416,1.416,0,1,0,.513.624A1.416,1.416,0,0,0,364.849,438.744Zm-.267,1.4a.573.573,0,0,1-.208.252.571.571,0,0,1-.541.053.577.577,0,0,1-.252-.208.575.575,0,0,1-.052-.541.573.573,0,0,1,.208-.252.565.565,0,0,1,.319-.1.572.572,0,0,1,.527.794Z"
+                    transform="translate(-349.203 -421.585)"
+                    fill=""
+                  />
+                </g>
+              </g>
+            </svg>
+            <span>Official Online Shop</span>
+          </a>
+        </nav>
+        <div class="social">
+          <h2 class="title">Official Account</h2>
+          <p class="sub-title">FOLLOW US</p>
+          <ul class="list">
+            <li class="item">
+              <a class="link" href="#" target="_blank">
+                <img class="icon" src="./images/global/icon_x.svg" alt="" />
+                <p class="text">
+                  Direct sales from the brewery
+                  <br />
+                  Local Sake Forest
+                </p>
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="#" target="_blank">
+                <img class="icon" src="./images/global/icon_x.svg" alt="" />
+                <p class="text">
+                  Local Sake Forest
+                  <br />
+                  Espal Fukushima Store
+                </p>
+              </a>
+            </li>
+            <li class="item">
+              <a class="link" href="#" target="_blank">
+                <img class="icon" src="./images/global/icon_x.svg" alt="" />
+                <p class="text">
+                  Food and Local Sake
+                  <br />
+                  "Morisshu"
+                </p>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <main class="home">
+      <div class="swiper-container" data-swiper="kv">
+        <div class="swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <picture>
+                <source media="(min-width: 768px)" srcset="images/home/img_kv01_pc.webp" />
+                <img src="./images/home/img_kv01_mb.webp" alt="" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source media="(min-width: 768px)" srcset="images/home/img_kv02_pc.webp" />
+                <img src="./images/home/img_kv02_mb.webp" alt="" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source media="(min-width: 768px)" srcset="images/home/img_kv03_pc.webp" />
+                <img src="./images/home/img_kv03_mb.webp" alt="" />
+              </picture>
+            </div>
+            <div class="swiper-slide">
+              <picture>
+                <source media="(min-width: 768px)" srcset="images/home/img_kv04_pc.webp" />
+                <img src="./images/home/img_kv04_mb.webp" alt="" />
+              </picture>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+      <h2 class="kv-title">
+        <span class="kv-overlay">
+          <span class="kv-bg"></span>
+          <span class="kv-text">
+            <span class="kv-body">Founded in 1906</span>
+            <span class="kv-body">Customer happiness</span>
+            <span class="kv-body">Over profit</span>
+          </span>
+        </span>
+      </h2>
+      <div data-header-trigger></div>
+    </main>
+  </body>
+</html>
