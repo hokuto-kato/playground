@@ -2,6 +2,9 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   base: `/sandbox/dynamic-color-change/`,
+  css: {
+    devSourcemap: true
+  },
   build: {
     outDir: `../docs/dynamic-color-change/`,
     emptyOutDir: true,

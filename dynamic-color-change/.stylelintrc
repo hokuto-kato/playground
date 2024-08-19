@@ -3,5 +3,8 @@
     "stylelint-config-standard-scss",
     "stylelint-config-recess-order"
   ],
-  "ignoreFiles": ["public/**/*", "dist/**/*"]
+  "ignoreFiles": ["public/**/*", "dist/**/*"],
+  "rules": {
+    "selector-class-pattern": null
+  }
 }
