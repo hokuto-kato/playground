@@ -1,0 +1,65 @@
+@use "global/reset";
+@use "global/base";
+@use "global/mixin" as *;
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.wrap {
+  width: 100%;
+  padding: 0 20px;
+}
+
+.custom-scrollbar {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+
+  @include tablet {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .content {
+    height: 100%;
+    padding: 20px;
+    overflow-y: scroll;
+    font-weight: 500;
+    border: 1px solid #ccc;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    p {
+      font-size: get-font-size(16);
+      line-height: 1.6;
+
+      &:nth-child(n + 2) {
+        margin-top: 1.6rem;
+      }
+    }
+  }
+
+  .scrollbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+    height: 100%;
+    background: #ccc;
+
+    .thumb {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      cursor: pointer;
+      background: #888;
+    }
+  }
+}

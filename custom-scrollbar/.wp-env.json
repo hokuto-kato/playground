@@ -1,0 +1,14 @@
+{
+  "core": "https://ja.wordpress.org/latest-ja.zip",
+  "phpVersion": "7.4",
+  "config": {
+    "WP_DEBUG": true
+  },
+  "themes": ["./wordpress/themes/mori"],
+  "mappings": {
+    "wp-content/uploads": "./wordpress/uploads",
+    "wp-content/themes": "./wordpress/themes",
+    "wp-content/plugins": "./wordpress/plugins"
+  },
+  "plugins": []
+}

@@ -1,0 +1,21 @@
+// color
+$black: #333;
+$white: #fff;
+$lightest-green: #eff2eb;
+$light-green: #00a273;
+$green: #4d6d2c;
+$red: #a80029;
+$light-gray: #f6f5f2;
+$gray: #cecece;
+$dark-blue: #19202c;
+
+// breakPoints
+$breakpoints: (
+  xs: 375px,
+  sm: 768px,
+  md: 1024px,
+  lg: 1440px,
+);
+
+// easing
+$ease-out-cubic: cubic-bezier(0.22, 0.61, 0.36, 1);

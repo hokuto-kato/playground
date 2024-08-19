@@ -1,0 +1,143 @@
+@use "sass:list";
+@use "sass:map";
+@use "~/global/variables" as *;
+
+$z-map: swiper, footer-banner, kv-title, inner, menu, header;
+
+@function get-z-index($name) {
+  @return list.index($z-map, $name);
+}
+
+@function get-font-size($size) {
+  @return calc($size / 16) + rem;
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin hover-opacity($opacity) {
+  transition: opacity 0.2s $ease-out-cubic;
+
+  @include hover {
+    opacity: $opacity;
+  }
+}
+
+@mixin hover-underline($color) {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-decoration-color: rgba($color, 0);
+  transition: text-decoration-color 0.2s $ease-out-cubic;
+
+  @include hover {
+    text-decoration-color: rgba($color, 1);
+  }
+}
+
+@mixin hover-button($color) {
+  position: relative;
+  z-index: 2;
+  overflow: hidden;
+  transition:
+    color 0.3s $ease-out-cubic,
+    background 0.3s $ease-out-cubic,
+    border 0.3s $ease-out-cubic;
+
+  & .path {
+    transition: fill 0.3s $ease-out-cubic;
+  }
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    display: block;
+    width: 50%;
+    height: 100%;
+    content: "";
+    background-color: $color;
+    transition: all 0.3s $ease-out-cubic;
+  }
+
+  &::before {
+    right: 0;
+  }
+
+  &::after {
+    left: 0;
+  }
+
+  @include hover {
+    color: $color;
+    background: $white;
+    border: 1px solid $color;
+
+    .spinner > span {
+      background-color: $green;
+    }
+
+    .wpcf7-submit {
+      color: $color;
+    }
+
+    &::before,
+    &::after {
+      width: 0;
+      background-color: $color;
+    }
+
+    & .path {
+      fill: $color;
+    }
+  }
+}
+
+@mixin mb {
+  @media (min-width: map.get($breakpoints, xs) + 1) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: map.get($breakpoints, sm)) {
+    @content;
+  }
+}
+
+@mixin pc {
+  @media (min-width: map.get($breakpoints, md)) {
+    @content;
+  }
+}
+
+@mixin lg-pc {
+  @media (min-width: map.get($breakpoints, lg)) {
+    @content;
+  }
+}
+
+@mixin min-width($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+@mixin adjust-margin($selectors...) {
+  @each $selector in $selectors {
+    @each $selector2 in $selectors {
+      #{$selector} + #{$selector2} {
+        margin-top: 1.9rem;
+
+        @include tablet {
+          margin-top: 1.7rem;
+        }
+      }
+    }
+  }
+}
