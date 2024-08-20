@@ -9,12 +9,24 @@ body {
   min-height: 100vh;
 }
 
-.wrap {
-  width: 100%;
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   padding: 0 20px;
+
+  @include tablet {
+    flex-direction: row;
+    gap: 40px;
+    padding: 0 40px;
+  }
 }
 
-.custom-scrollbar {
+.wrap {
+  width: 100%;
+}
+
+.canvas {
   position: relative;
   width: 100%;
   height: 300px;
@@ -25,7 +37,7 @@ body {
     margin: 0 auto;
   }
 
-  .content {
+  .canvastext {
     height: 100%;
     padding: 20px;
     overflow-y: scroll;
@@ -46,7 +58,7 @@ body {
     }
   }
 
-  .scrollbar {
+  .scrollbarvertical {
     position: absolute;
     top: 0;
     right: 0;
@@ -54,7 +66,7 @@ body {
     height: 100%;
     background: #ccc;
 
-    .thumb {
+    .buttonscrollbarupdown {
       position: absolute;
       top: 0;
       width: 100%;

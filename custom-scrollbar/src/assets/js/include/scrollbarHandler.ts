@@ -1,56 +1,62 @@
 export const initScrollbar = () => {
-  const content = document.querySelector(".content");
-  const scrollbar = document.querySelector(".scrollbar");
-  const thumb = scrollbar?.querySelector(".thumb") as HTMLElement;
+  const contents = document.querySelectorAll(".canvastext");
+  const scrollbars = document.querySelectorAll(".scrollbarvertical");
 
-  if (!content || !scrollbar || !thumb) return;
+  if (contents.length !== scrollbars.length) return;
 
-  // スクロールバーの高さをコンテンツの高さに応じて変える
-  const updateScrollbarHeight = () => {
-    const scrollbarHeight = (content.clientHeight / content.scrollHeight) * scrollbar.clientHeight;
-    thumb.style.height = `${scrollbarHeight}px`;
-  };
+  contents.forEach((content, index) => {
+    const scrollbar = scrollbars[index];
+    const thumb = scrollbar?.querySelector(".buttonscrollbarupdown") as HTMLElement;
 
-  // コンテンツの高さの変化を監視
-  const observer = new MutationObserver(updateScrollbarHeight);
-  observer.observe(content, { childList: true, subtree: true });
+    if (!content || !scrollbar || !thumb) return;
 
-  // サムのドラッグ機能
-  let isDragging = false;
-  let startY: number;
-  let startTop: number;
+    // Adjust the height of the scrollbar according to the height of the content
+    const updateScrollbarHeight = () => {
+      const scrollbarHeight = (content.clientHeight / content.scrollHeight) * scrollbar.clientHeight;
+      thumb.style.height = `${scrollbarHeight}px`;
+    };
 
-  // 初期化時にスクロールバーの高さを更新
-  updateScrollbarHeight();
+    // Monitor changes in the height of the content
+    const observer = new MutationObserver(updateScrollbarHeight);
+    observer.observe(content, { childList: true, subtree: true });
 
-  // コンテンツのスクロールに応じてサムを移動
-  content.addEventListener("scroll", () => {
-    const scrollPercentage = content.scrollTop / (content.scrollHeight - content.clientHeight);
-    const thumbPosition = scrollPercentage * (scrollbar.clientHeight - thumb.clientHeight);
-    thumb.style.top = `${thumbPosition}px`;
-  });
+    // Drag functionality for the thumb
+    let isDragging = false;
+    let startY: number;
+    let startTop: number;
 
-  thumb.addEventListener("mousedown", (e) => {
-    isDragging = true;
-    startY = e.clientY;
-    startTop = parseInt(getComputedStyle(thumb).top, 10);
-    e.preventDefault();
-  });
+    // Update the height of the scrollbar when initializing
+    updateScrollbarHeight();
 
-  document.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
-    const deltaY = e.clientY - startY;
-    const newTop = startTop + deltaY;
-    const maxTop = scrollbar.clientHeight - thumb.clientHeight;
+    // Move the thumb according to the scroll of the content
+    content.addEventListener("scroll", () => {
+      const scrollPercentage = content.scrollTop / (content.scrollHeight - content.clientHeight);
+      const thumbPosition = scrollPercentage * (scrollbar.clientHeight - thumb.clientHeight);
+      thumb.style.top = `${thumbPosition}px`;
+    });
 
-    if (newTop >= 0 && newTop <= maxTop) {
-      thumb.style.top = `${newTop}px`;
-      const scrollPercentage = newTop / maxTop;
-      content.scrollTop = scrollPercentage * (content.scrollHeight - content.clientHeight);
-    }
-  });
+    thumb.addEventListener("mousedown", (e) => {
+      isDragging = true;
+      startY = e.clientY;
+      startTop = parseInt(getComputedStyle(thumb).top, 10);
+      e.preventDefault();
+    });
 
-  document.addEventListener("mouseup", () => {
-    isDragging = false;
+    document.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      const deltaY = e.clientY - startY;
+      const newTop = startTop + deltaY;
+      const maxTop = scrollbar.clientHeight - thumb.clientHeight;
+
+      if (newTop >= 0 && newTop <= maxTop) {
+        thumb.style.top = `${newTop}px`;
+        const scrollPercentage = newTop / maxTop;
+        content.scrollTop = scrollPercentage * (content.scrollHeight - content.clientHeight);
+      }
+    });
+
+    document.addEventListener("mouseup", () => {
+      isDragging = false;
+    });
   });
 };
