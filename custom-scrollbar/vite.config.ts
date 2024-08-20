@@ -27,11 +27,11 @@ export default defineConfig(() => ({
     emptyOutDir: true,
     rollupOptions: {
       output: {
-        entryFileNames: "js/script.js",
-        chunkFileNames: "js/script.js",
+        entryFileNames: "js/script.[hash].js",
+        chunkFileNames: "js/script.[hash].js",
         assetFileNames: (assetsInfo) => {
           if (/\.css$/.test(assetsInfo.name ?? "")) {
-            return "css/style.[ext]";
+            return "css/style.[hash].[ext]";
           }
           if (/\.(png|jpe?g|gif|svg|webp)$/.test(assetsInfo.name ?? "")) {
             return "images/global/[name].[ext]";
